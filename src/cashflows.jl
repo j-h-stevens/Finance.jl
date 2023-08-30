@@ -8,7 +8,7 @@ Calculate the present value and its derivative in one pass for Newton's Method
     - 'times::UnitRange{Int64})': the unit range for the periods. 
     ...
 """
-function pv_div_pvdv(r::Float64, cashflows::Vector{<:Real}, times::UnitRange{Int64})
+function pv_div_pvdv(r::Float64, cashflows::AbstractArray{<:Real}, times::UnitRange{Int64})
     n = 0.0
     d = 0.0
     @turbo for i ∈ eachindex(cashflows)
@@ -32,7 +32,7 @@ Algorithms for Optimization, Mykel J. Kochenderfer and Tim A. Wheeler, pg 88
     - 'k_max::Int64': the maximum number of iterations.
     ...
 """
-function newt_irr(cashflows::Vector{<:Real}, times::UnitRange{Int64}, x::Float64, 
+function newt_irr(cashflows::AbstractArray{<:Real}, times::UnitRange{Int64}, x::Float64, 
     ε::Float64, k_max::Int64)
     k = 1
     Δ = Inf
@@ -56,7 +56,7 @@ Algorithms for Optimization, Mykel J. Kochenderfer and Tim A. Wheeler, pg 88
     - 'k_max::Int64': the maximum number of iterations.
     ...
 """
-function newt_irr(cashflows::Vector{<:Real}, times::UnitRange{Int64}; 
+function newt_irr(cashflows::AbstractArray{<:Real}, times::UnitRange{Int64}; 
     guess=0.001, tol=1e-9, k_max=100)
     # use newton's method with hand-coded derivative
     return exp(newt_irr(cashflows,times,guess,tol,k_max))-1
