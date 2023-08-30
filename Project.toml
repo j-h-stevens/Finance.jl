@@ -1,0 +1,20 @@
+name = "Finance"
+uuid = "0dd1cc64-49e6-4713-890f-c32f13106259"
+authors = ["John Stevens"]
+version = "1.0.0-DEV"
+
+[deps]
+FinanceCore = "b9b1ffdd-6612-4b69-8227-7663be06e089"
+LoopVectorization = "bdcacae8-1622-11e9-2a5c-532679323890"
+NPFinancial = "d92e12fc-aea5-418c-9372-8108a4db1700"
+Polynomials = "f27b6e38-b328-58d1-80ce-0feddd5e7a45"
+Roots = "f2b01f46-fcfa-551c-844a-d8ac1e96c665"
+
+[compat]
+julia = "1.9.2"
+
+[extras]
+Test = "8dfed614-e22c-5e08-85e1-65c5234f0b40"
+
+[targets]
+test = ["Test"]
