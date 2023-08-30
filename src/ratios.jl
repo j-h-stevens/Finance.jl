@@ -24,7 +24,7 @@ julia> sharpe(0.02, collect(1:1:10))
 1.809984429867737
 ```
 """
-sharpe(rf::T, r::Vector{U}) where {T<:Real, U<:Real} = (mean(r) - rf)/std(r)
+sharpe(rf::T, r::AbstractArray{U}) where {T<:Real, U<:Real} = (mean(r) - rf)/std(r)
 
 """
     sortino(μ::T, r::T, θ::VectorT) where {T<:Real}
