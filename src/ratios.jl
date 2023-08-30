@@ -38,6 +38,6 @@ julia> sortino(mean(collect(1:1:10)), 5, collect(1:1:10))
 0.31622776601683794
 ```
 """
-sortino(mu::T, rf::U, rs::Vector{V}) where {T<:Real, U<:Real, V<:Real} = (mu - rf)/std(rs[rs .< mu])
+sortino(mu::T, rf::U, rs::AbstractArray{V}) where {T<:Real, U<:Real, V<:Real} = (mu - rf)/std(rs[rs .< mu])
 
 export sharpe, sortino
