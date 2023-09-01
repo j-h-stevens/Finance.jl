@@ -12,6 +12,6 @@ include("cashflows.jl")
 include("ratios.jl")
 include("returns.jl")
 export irr, rrr
-export sharpe, sortino
+export sharpe, sortino, west_sharpe, west_sortino
 export choln, weighted_returns!
 end
