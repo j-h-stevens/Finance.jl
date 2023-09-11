@@ -47,4 +47,28 @@ function weighted_returns!(wr::Matrix{Float64}, r::Array{Float64,3}, s::Int64,
     wr .-= f
 end
 
+"""
+    weighted_returns!(wr, r, s, n, w, f)
+
+Compute the weighted returns matrix from the asset class returns. 
+...
+    # Arguments
+    - `r::Array{Float64,3}`: the 3 dimensional array of asset class returns.
+    - `wr::Matrix{Float64}`: the Matrix storing the the weighted returns. 
+    - `s::Integer`: the first index. 
+    - `n::Integer`: the final index.
+    - `ws::Vector{Float64}`: the allocation weight vector.
+    - `n::Float64`: the periodic fee rate
+...
+"""
+function weighted_returns!(wr::Matrix{Float64}, r::Array{Float64,3}, s::Int64, 
+    n::Int64, w::Matrix{Float64}, f::Float64)
+    @views @Threads.threads for i in axes(r, 3)
+        for j ∈ s:n
+            wr[j,i] = r[j,:,i] .* w[j,:]
+        end
+    end
+    wr .-= f
+end
+
 export choln, weighted_returns!

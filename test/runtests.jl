@@ -3,8 +3,8 @@ using Test
 using SafeTestsets
 
 @time begin
-    @time @safetestset "Cashflows" begin
-        include("cashflows_test.jl")
+    @time @safetestset "Valuations" begin
+        include("valuations_test.jl")
     end
     @time @safetestset "Ratios" begin
         include("ratios_test.jl")
